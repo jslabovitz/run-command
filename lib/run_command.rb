@@ -5,6 +5,10 @@ module RunCommand
   class Error < Exception; end
 
   def self.run_command(command, *args)
+    new.run_command(command, *args)
+  end
+
+  def run_command(command, *args)
     options = args.last.kind_of?(Hash) ? args.pop : {}
     env = options.delete(:env) || {}
     verbose = options.delete(:verbose) || false
