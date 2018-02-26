@@ -1,7 +1,7 @@
-require_relative 'lib/run_command/version'
+require_relative 'lib/run-command/version'
 
 Gem::Specification.new do |s|
-  s.name          = 'run_command'
+  s.name          = 'run-command'
   s.version       = RunCommand::VERSION
   s.summary       = 'A friendlier system().'
   s.author        = 'John Labovitz'
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
     RunCommand provides a friendlier system().
   }
   s.license       = 'MIT'
-  s.homepage      = 'http://github.com/jslabovitz/run_command'
+  s.homepage      = 'http://github.com/jslabovitz/run-command'
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
