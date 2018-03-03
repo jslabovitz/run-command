@@ -1,6 +1,6 @@
 require 'shellwords'
 
-module RunCommand
+class RunCommand
 
   class Error < Exception; end
 
