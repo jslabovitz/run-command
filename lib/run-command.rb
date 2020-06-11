@@ -9,23 +9,25 @@ class RunCommand
   end
 
   def run_command(command, *args)
+    command = command.to_s
     options = args.last.kind_of?(Hash) ? args.pop : {}
+    args = args.flatten.compact.map(&:to_s)
     env = options.delete(:env) || {}
     verbose = options.delete(:verbose) || false
     pretend = options.delete(:pretend) || false
     argv0 = options.delete(:argv0)
-    rebuilt_command = [
-      # env.empty? ? nil : env.map { |kv| kv.join('=') },
-      command,
-      *args,
-    ].flatten.compact.shelljoin
-    warn "$ #{rebuilt_command}" if verbose
+    if verbose
+      warn "$ %s%s" % [
+        env.empty? ? nil : env.map { |kv| kv.join('=') }.join(' ') + ' ',
+        [command, *args].shelljoin,
+      ]
+    end
     unless pretend
       system(
         env,
         argv0 ? [command, argv0] : command,
-        *args.flatten.compact.map(&:to_s),
-        options) or raise Error, "Can't run command (status = #{$?}): #{rebuilt_command}"
+        *args,
+        options) or raise Error, "Can't run command #{command.inspect}: status = #{$?}"
     end
   end
 
