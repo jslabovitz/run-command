@@ -15,6 +15,7 @@ class RunCommand
     env = options.delete(:env) || {}
     verbose = options.delete(:verbose) || false
     pretend = options.delete(:pretend) || false
+    return_status = options.delete(:return_status) || false
     argv0 = options.delete(:argv0)
     if verbose
       warn "$ %s%s" % [
@@ -27,7 +28,12 @@ class RunCommand
         env,
         argv0 ? [command, argv0] : command,
         *args,
-        options) or raise Error, "Can't run command #{command.inspect}: status = #{$?}"
+        options)
+      if return_status
+        return $?
+      elsif $? != 0
+        raise Error, "Can't run command #{command.inspect}: status = #{$?}"
+      end
     end
   end
 
