@@ -30,9 +30,9 @@ class RunCommand
         *args,
         options)
       if return_status
-        return $?
-      elsif $? != 0
-        raise Error, "Can't run command #{command.inspect}: status = #{$?}"
+        $?.to_i
+      else
+        raise Error, "Can't run command #{command.inspect}: status = #{$?}" if $? != 0
       end
     end
   end
