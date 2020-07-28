@@ -10,12 +10,12 @@ class RunCommand
 
   def run_command(command, *args)
     command = command.to_s
-    options = args.last.kind_of?(Hash) ? args.pop : {}
+    options = args.last.kind_of?(Hash) ? args.pop.dup : {}
+    options[:exception] = true
     args = args.flatten.compact.map(&:to_s)
     env = options.delete(:env) || {}
     verbose = options.delete(:verbose) || false
     pretend = options.delete(:pretend) || false
-    return_status = options.delete(:return_status) || false
     argv0 = options.delete(:argv0)
     if verbose
       warn "$ %s%s" % [
@@ -24,16 +24,7 @@ class RunCommand
       ]
     end
     unless pretend
-      system(
-        env,
-        argv0 ? [command, argv0] : command,
-        *args,
-        options)
-      if return_status
-        $?.to_i
-      else
-        raise Error, "Can't run command #{command.inspect}: status = #{$?}" if $? != 0
-      end
+      IO.popen(env, [argv0 ? [command, argv0] : command, *args], 'r', options).read
     end
   end
 
