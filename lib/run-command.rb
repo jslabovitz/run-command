@@ -26,7 +26,7 @@ class RunCommand
     unless pretend
       data = ''
       IO.popen(env, [argv0 ? [command, argv0] : command, *args], 'r', options) do |io|
-        data += io.sysread(1024)
+        data += io.read
       end
       data
     end
