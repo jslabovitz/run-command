@@ -1,0 +1,27 @@
+PATH
+  remote: .
+  specs:
+    run-command (0.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.14.4)
+    minitest-power_assert (0.3.1)
+      minitest
+      power_assert (>= 1.1)
+    power_assert (2.0.0)
+    rake (13.0.3)
+
+PLATFORMS
+  arm64-darwin-20
+
+DEPENDENCIES
+  bundler (~> 2.2)
+  minitest (~> 5.14)
+  minitest-power_assert (~> 0.3)
+  rake (~> 13.0)
+  run-command!
+
+BUNDLED WITH
+   2.2.15

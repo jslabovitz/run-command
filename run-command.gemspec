@@ -1,8 +1,6 @@
-require_relative 'lib/run-command/version'
-
 Gem::Specification.new do |s|
   s.name          = 'run-command'
-  s.version       = RunCommand::VERSION
+  s.version       = '0.2'
   s.summary       = 'A friendlier system().'
   s.author        = 'John Labovitz'
   s.email         = 'johnl@johnlabovitz.com'
@@ -16,6 +14,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.require_path  = 'lib'
 
-  s.add_development_dependency 'rake', '~> 12.3'
-  s.add_development_dependency 'rubygems-tasks', '~> 0.2'
+  s.add_development_dependency 'bundler', '~> 2.2'
+  s.add_development_dependency 'minitest', '~> 5.14'
+  s.add_development_dependency 'minitest-power_assert', '~> 0.3'
+  s.add_development_dependency 'rake', '~> 13.0'
 end

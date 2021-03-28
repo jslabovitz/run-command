@@ -1,12 +1,6 @@
 require 'shellwords'
 
-class RunCommand
-
-  class Error < Exception; end
-
-  def self.run_command(command, *args)
-    new.run_command(command, *args)
-  end
+module RunCommand
 
   def run_command(command, *args)
     command = command.to_s
@@ -31,15 +25,5 @@ class RunCommand
       data
     end
   end
-
-end
-
-if $0 == __FILE__
-
-  RunCommand.run_command('echo', %w{a b}, verbose: true)
-  RunCommand.run_command('echo', %w{a b}, verbose: true, env: { 'FOO' => 'bar' })
-  RunCommand.run_command('echo', %w{a b}, verbose: true, env: { 'FOO' => 'bar' }, argv0: 'DATE')
-  RunCommand.run_command('echo', %w{a b}, verbose: true, pretend: true)
-  RunCommand.run_command('echo', ['a', 'b', [1, :foo]], verbose: true)
 
 end
