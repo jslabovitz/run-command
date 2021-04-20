@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    run-command (0.2)
+    run-command (0.3)
 
 GEM
   remote: https://rubygems.org/
@@ -24,4 +24,4 @@ DEPENDENCIES
   run-command!
 
 BUNDLED WITH
-   2.2.15
+   2.2.16
