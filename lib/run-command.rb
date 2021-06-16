@@ -1,8 +1,8 @@
 require 'shellwords'
 
-module RunCommand
+module Kernel
 
-  class CommandFailed < Exception; end
+  class RunCommandFailed < Exception; end
 
   def run_command(*args, **options)
     command = args.shift
@@ -24,7 +24,7 @@ module RunCommand
         io.close_write
         io.read
       end
-      raise CommandFailed, "Command #{command.to_s.inspect} failed: #{$?}" if $? != 0
+      raise RunCommandFailed, "Command #{command.to_s.inspect} failed: #{$?}" if $? != 0
       output
     end
   end
