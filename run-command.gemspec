@@ -1,11 +1,11 @@
 Gem::Specification.new do |s|
   s.name          = 'run-command'
-  s.version       = '0.3'
+  s.version       = '0.4'
   s.summary       = 'A friendlier system().'
   s.author        = 'John Labovitz'
   s.email         = 'johnl@johnlabovitz.com'
   s.description   = %q{
-    RunCommand provides a friendlier system().
+    A friendlier system().
   }
   s.license       = 'MIT'
   s.homepage      = 'http://github.com/jslabovitz/run-command'
