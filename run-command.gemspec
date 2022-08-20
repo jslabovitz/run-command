@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = 'run-command'
-  s.version       = '0.4'
+  s.version       = '0.5'
   s.summary       = 'A friendlier system().'
   s.author        = 'John Labovitz'
   s.email         = 'johnl@johnlabovitz.com'
