@@ -5,8 +5,8 @@ module Kernel
   class RunCommandFailed < Exception; end
 
   def run_command(*args, **options)
-    command = args.shift
     args = args.flatten.compact.map(&:to_s)
+    command = args.shift
     env = options.delete(:env) || {}
     verbose = options.delete(:verbose) || false
     pretend = options.delete(:pretend) || false
