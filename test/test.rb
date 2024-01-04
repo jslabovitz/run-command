@@ -3,7 +3,7 @@ require 'minitest/power_assert'
 
 require 'run-command'
 
-class Test < MiniTest::Test
+class Test < Minitest::Test
 
   def test_simple
     assert_output {
